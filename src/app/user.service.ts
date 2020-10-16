@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { USERS } from './mock-users';
 import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getUsers(): Observable<User[]> {
+    this.messageService.add('UserService: user list is updated!');
     return of(USERS);
 }
 
