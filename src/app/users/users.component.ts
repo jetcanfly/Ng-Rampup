@@ -9,16 +9,6 @@ import { UserService } from '../user.service';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  user: User = {
-    id: 1,
-    name: 'Will',
-  };
-
-  selectedUser: User;
-
-  onSelect(user: User): void {
-    this.selectedUser = user;
-  }
 
   constructor(private userService: UserService) {}
 
@@ -27,7 +17,6 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers()
-        .subscribe(users => this.users = users);
-}
+    this.userService.getUsers().subscribe((users) => (this.users = users));
+  }
 }
